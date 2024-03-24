@@ -1,0 +1,19 @@
+<div class="container border border-success-subtle p-4 mt-3">
+    <form [formGroup]="loginForm" (ngSubmit)="submit()"> 
+      <div class="mb-3">
+        <label for="userName" class="form-label">userName</label>
+        <input type="text" class="form-control" id="userName" formControlName="userName">
+        @if (loginForm.get('userName')?.touched && loginForm.get('userName')?.invalid) {
+                <p class="alert alert-danger">userName is required</p>
+        }
+        @if (loginForm.get('userName')?.errors?.['cannotcontainSpace']) {
+            <p class="alert alert-danger">userName connot contain space</p>
+        }
+      </div>
+      <div class="mb-3">
+        <label for="email" class="form-label">Email</label>
+        <input type="email" class="form-control" id="email" formControlName="email">
+      </div>
+      <button type="submit" class="btn btn-primary">Submit</button>
+    </form>
+  </div>
